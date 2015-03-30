@@ -1,4 +1,4 @@
-/*
+/* passed
  *  linux/fs/buffer.c
  *
  *  (C) 1991  Linus Torvalds
@@ -32,7 +32,10 @@
 // io 头文件。定义硬件端口输入/输出宏汇编语句。
 #include <asm/io.h>
 
-extern int end;		 //由连接程序ld 生成的表明程序末端的变量。[??]
+extern int end;		 //由连接程序ld 生成的位于程序末端的变量。
+extern void put_super(int);
+extern void invalidate_inodes(int);
+
 struct buffer_head * start_buffer = (struct buffer_head *)(&end);
 struct buffer_head * hash_table[NR_HASH] = {0};	// NR_HASH = 307 项。
 static struct buffer_head * free_list = 0;
@@ -49,7 +52,7 @@ static _inline void wait_on_buffer(struct buffer_head * bh)
 }
 
 //// 系统调用。同步设备和内存高速缓冲中数据。
-int sys_sync(void)
+int sys_sync(void)//passed
 {
 	int i;
 	struct buffer_head * bh;
@@ -337,11 +340,13 @@ struct buffer_head * bread(int dev,int block)
 // 从from 地址复制一块数据到to 位置。
 extern __inline void COPYBLK(char* from, char* to)
 {_asm{
+	pushf
 	mov ecx,BLOCK_SIZE/4
 	mov esi,from
 	mov edi,to
 	cld
 	rep movsd
+	popf
 }}
 /*#define COPYBLK(from,to) \
 __asm__("cld\n\t" \

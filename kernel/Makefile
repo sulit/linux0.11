@@ -80,4 +80,4 @@ traps.s traps.o : traps.c ../include/string.h ../include/linux/head.h \
   ../include/linux/sched.h ../include/linux/fs.h ../include/sys/types.h \
   ../include/linux/mm.h ../include/signal.h ../include/linux/kernel.h \
   ../include/asm/system.h ../include/asm/segment.h ../include/asm/io.h 
-vsprintf.s vsprintf.o : vsprintf.c ../include/stdarg.h ../include/string.h 
+vsprintf.s vsprintf.o : vsprintf.c ../include/stdarg.h ../include/string.h

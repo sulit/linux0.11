@@ -12,7 +12,7 @@ typedef struct __tagFILE_HEADER{
 __FILL_HEADER g_FillHeader = {0x90,0x90,0x90,0xe9,0x00000000};    //This structure will be
                                                                   //written to target file.
 
-char* g_lpszTargetPath = "E:\\book\\Temp\\linux011VC\\VC\\Release\\system";  //Target file¡¯s path and name.
+char* g_lpszTargetPath = "E:\\book\\Temp\\linux011VC\\VC\\Release\\system";  //Target fileÂ¡Â¯s path and name.
 
 void main(int argc,char argv[])
 {
