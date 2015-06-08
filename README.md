@@ -32,7 +32,7 @@ Optional (bochs emulator instead of qemu)
     $ make start-hd	// boot it on qemu with hard disk image
     $ make debug-hd	// debug it via qemu & gdb, you'd start gdb to connect it.
 
-    $ gdb images/kernel.sym
+    $ gdb images/kernel.sym -tui
     (gdb) target remote :1234
     (gdb) b main
     (gdb) c
